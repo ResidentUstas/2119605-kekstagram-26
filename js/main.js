@@ -48,8 +48,8 @@ function getComment(){
   const commentObj = {
     id: getCommentNumber(),
     avatar: `img/avatar-${ getRandomPositiveInteger(1,7) }.svg`,
-    message:  commentsList[getRandomPositiveInteger(0, commentsList.length)],
-    name: nameList[getRandomPositiveInteger(0, nameList.length)]
+    message:  commentsList[getRandomPositiveInteger(0, commentsList.length-1)],
+    name: nameList[getRandomPositiveInteger(0, nameList.length-1)]
   };
 
   return commentObj;
@@ -61,7 +61,7 @@ function generateObjects(){
    {
      id : getRandomPositiveInteger(1,26),
      url : `photos/${  getPictureNumber()  }.jpg`,
-     description: descriptionsList[getRandomPositiveInteger(0,descriptionsList.length)],
+     description: descriptionsList[getRandomPositiveInteger(0,descriptionsList.length-1)],
      likes: getRandomPositiveInteger(15,201),
      comments: getComment()
    };
