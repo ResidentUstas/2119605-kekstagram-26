@@ -21,7 +21,7 @@ function checkStringLength(string, length) {
 function getPictureNumber() {
   // eslint-disable-next-line no-constant-condition
   while (true) {
-    const picNumber = getRandomPositiveInteger(1, 1001);
+    const picNumber = getRandomPositiveInteger(1, 25);
     if (!occupPictureNumbers.includes(picNumber)) {
       occupPictureNumbers.push(picNumber);
       return picNumber;
@@ -31,11 +31,10 @@ function getPictureNumber() {
 
 function getCommentNumber() {
   while (true) {
-    const commentNumber = getRandomPositiveInteger(1, 1001);
-    if (!occupCommentNumbers.includes(commentNumber)) {
-      occupCommentNumbers.push(commentNumber);
+    const commentNumber = getRandomPositiveInteger(1, 10);
+    
       return commentNumber;
-    }
+    
   }
 }
 
@@ -55,7 +54,7 @@ function generateObjects() {
     const picture =
         {
           id: getRandomPositiveInteger(1, 26),
-          url: `photos/${getPictureNumber()}.jpg`,
+          url: `./photos/${getPictureNumber()}.jpg`,
           description: descriptionsList[getRandomPositiveInteger(0, descriptionsList.length - 1)],
           likes: getRandomPositiveInteger(15, 201),
           comments: getComment()
@@ -63,6 +62,7 @@ function generateObjects() {
 
     pictureArray.push(picture);
   }
+  return pictureArray;
 }
 
 export { generateObjects };
