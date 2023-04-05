@@ -1,5 +1,7 @@
 import {generateObjects} from './util.js';
-console.log('module up!');
+const bodyTag = document.querySelector('body');
+const bigPicture = document.querySelector('.big-picture');
+
 // import {descriptionsList, commentsList, nameList} from './data.js';
 const pictureTemplate = document.querySelector('#picture').content;
 const pictureList = generateObjects();
@@ -15,14 +17,27 @@ pictureList.forEach((picture) => {
 
 const mouseOnPictureHandler = function(picture) {
   picture.addEventListener('click', ()=> {
-    const pic = document.querySelector('.big-picture');
-    pic.classList.remove('hidden');
-    var image = pic.querySelector('.big-picture__img');
+    bodyTag.classList.add('modal-open');
+    bigPicture.classList.remove('hidden');
+    const image = bigPicture.querySelector('.big-picture__img');
     image.querySelector('img').src = picture.querySelector('.picture__img').src;
+    bigPicture.querySelector('.likes-count').textContent = picture.querySelector('.picture__likes').textContent;
   });
 };
-let pictures = document.querySelectorAll('.picture');
+const pictures = document.querySelectorAll('.picture');
 
 for (let i=0;i<pictures.length;i++){
   mouseOnPictureHandler(pictures[i]);
 }
+
+document.addEventListener('keydown', (evt)=> {
+  if (evt.keyCode === 27){
+    bigPicture.classList.add('hidden');
+    bodyTag.classList.remove('modal-open');
+  }
+});
+
+bigPicture.addEventListener('click', ()=> {
+  bigPicture.classList.add('hidden');
+  bodyTag.classList.remove('modal-open');
+});
