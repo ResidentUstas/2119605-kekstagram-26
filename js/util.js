@@ -32,21 +32,27 @@ function getPictureNumber() {
 function getCommentNumber() {
   while (true) {
     const commentNumber = getRandomPositiveInteger(1, 10);
-    
-      return commentNumber;
-    
+
+    return commentNumber;
+
   }
 }
 
 function getComment() {
-  const commentObj = {
-    id: getCommentNumber(),
-    avatar: `img/avatar-${getRandomPositiveInteger(1, 7)}.svg`,
-    message: commentsList[getRandomPositiveInteger(0, commentsList.length - 1)],
-    name: nameList[getRandomPositiveInteger(0, nameList.length - 1)]
-  };
+  const numComments = getRandomPositiveInteger(1, 4);
+  const comments =[];
+  for (let i=0;i<numComments;i++){
+    const commentObj = {
+      id: getCommentNumber(),
+      avatar: `./img/avatar-${getRandomPositiveInteger(1, 7)}.svg`,
+      message: commentsList[getRandomPositiveInteger(0, commentsList.length - 1)],
+      name: nameList[getRandomPositiveInteger(0, nameList.length - 1)]
+    };
 
-  return commentObj;
+    comments[i] = commentObj;
+  }
+
+  return comments;
 }
 
 function generateObjects() {
