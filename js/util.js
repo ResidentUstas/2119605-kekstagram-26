@@ -2,7 +2,6 @@
 import {descriptionsList, commentsList, nameList} from './data.js';
 const pictureArray = [];
 const occupPictureNumbers = [];
-const occupCommentNumbers = [];
 
 function getRandomPositiveInteger(a, b) {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
@@ -44,7 +43,7 @@ function getComment() {
   for (let i=0;i<numComments;i++){
     const commentObj = {
       id: getCommentNumber(),
-      avatar: `./img/avatar-${getRandomPositiveInteger(1, 7)}.svg`,
+      avatar: `./img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
       message: commentsList[getRandomPositiveInteger(0, commentsList.length - 1)],
       name: nameList[getRandomPositiveInteger(0, nameList.length - 1)]
     };

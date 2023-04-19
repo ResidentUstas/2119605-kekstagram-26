@@ -8,8 +8,8 @@ const mouseOnPictureHandler = function(picture) {
     const image = bigPicture.querySelector('.big-picture__img');
     image.querySelector('img').src = picture.querySelector('.picture__img').src;
     bigPicture.querySelector('.likes-count').textContent = picture.querySelector('.picture__likes').textContent;
-    bigPicture.querySelector('.social__comments').innerHTML = '';
     const comments = picture.querySelectorAll('.social__comment');
+    bigPicture.querySelector('.social__comments').innerHTML = '';
     comments.forEach((comment) => {
       const comm = comment.cloneNode(true);
       bigPicture.querySelector('.social__comments').appendChild(comm);
@@ -28,3 +28,9 @@ document.addEventListener('keydown', (evt)=> {
     bodyTag.classList.remove('modal-open');
   }
 });
+
+bigPicture.addEventListener('click', ()=> {
+  bigPicture.classList.add('hidden');
+  bodyTag.classList.remove('modal-open');
+});
+  
